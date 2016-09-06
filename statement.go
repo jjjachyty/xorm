@@ -984,7 +984,8 @@ func (statement *Statement) Join(joinOP string, tablename interface{}, condition
 	case []string:
 		t := tablename.([]string)
 		if len(t) > 1 {
-			fmt.Fprintf(&buf, "%v AS %v", statement.Engine.Quote(t[0]), statement.Engine.Quote(t[1]))
+			//fmt.Fprintf(&buf, "%v AS %v", statement.Engine.Quote(t[0]), statement.Engine.Quote(t[1])) //before
+			fmt.Fprintf(&buf, "%s  %s", statement.Engine.Quote(t[0]), statement.Engine.Quote(t[1])) //after
 		} else if len(t) == 1 {
 			fmt.Fprintf(&buf, statement.Engine.Quote(t[0]))
 		}

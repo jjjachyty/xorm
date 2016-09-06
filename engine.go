@@ -129,7 +129,8 @@ func (engine *Engine) Quote(sql string) string {
 }
 
 func (engine *Engine) quote(sql string) string {
-	return engine.dialect.QuoteStr() + sql + engine.dialect.QuoteStr()
+	return sql //after
+	//return engine.dialect.QuoteStr() + sql + engine.dialect.QuoteStr() //before
 }
 
 func (engine *Engine) quoteColumn(keyName string) string {
@@ -159,7 +160,8 @@ func (engine *Engine) quoteTable(keyName string) string {
 
 	keyName = strings.Replace(keyName, ".", engine.dialect.QuoteStr()+"."+engine.dialect.QuoteStr(), -1)
 
-	return engine.dialect.QuoteStr() + keyName + engine.dialect.QuoteStr()
+	//return engine.dialect.QuoteStr() + keyName + engine.dialect.QuoteStr() //before
+	return keyName //after
 }
 
 // SqlType will be depracated, please use SQLType instead
